@@ -388,10 +388,41 @@
 <p>&#x70B9;&#x51FB;&#x52AB;&#x6301;&#x6027;&#x5BF9;&#x597D;&#x7406;&#x89E3;&#x3002;&#x653B;&#x51FB;&#x8005;&#x901A;&#x8FC7;&#x5728;&#x4E00;&#x4E2A;&#x6076;&#x610F;&#x7F51;&#x7AD9;&#x4E0A;&#x8986;&#x76D6;&#x4E00;&#x5C42;&#x900F;&#x660E;&#x7684; iframe &#x6765;&#x52A0;&#x8F7D;&#x76EE;&#x6807;&#x7F51;&#x7AD9;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x5728;&#x6076;&#x610F;&#x7F51;&#x7AD9;&#x4E0A;&#x663E;&#x793A;&#x6309;&#x94AE;&#xFF0C;&#x8F93;&#x5165;&#x6846;&#x6216;&#x8005;&#x4EE5;&#x6E38;&#x620F;&#x7684;&#x5F62;&#x5F0F;&#x5F15;&#x5BFC;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x64CD;&#x4F5C;&#x900F;&#x660E;&#x76EE;&#x6807;&#x7F51;&#x7AD9;&#x4E0A;&#x76F8;&#x540C;&#x4F4D;&#x7F6E;&#x201C;&#x771F;&#x5B9E;&#x201D;&#x5143;&#x7D20;&#xFF0C;&#x5B8C;&#x6210;&#x653B;&#x51FB;&#x3002;</p>
 <p>&#x7531;&#x4E8E;&#xFF0C;iframe &#x6253;&#x5F00;&#x7F51;&#x7AD9;&#x65F6;&#x76EE;&#x6807;&#x7F51;&#x7AD9;&#x901A;&#x5E38;&#x5DF2;&#x7ECF;&#x6388;&#x6743;&#x767B;&#x9646;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x7C7B;&#x653B;&#x51FB;&#x539F;&#x7406;&#x7B80;&#x5355;&#x6548;&#x679C;&#x663E;&#x8457;&#x3002;</p>
 <p><img src="asserts/clickjacking-one.jpg" alt="ClickJacking"></p>
+<p><img src="asserts/Clickjack_two.png" alt="ClickJackingTwo"></p>
 <h3 id="2-&#x9632;&#x5FA1;">2. &#x9632;&#x5FA1;</h3>
+<p><strong>&#x901A;&#x8FC7;Js&#x4EE3;&#x7801;&#x68C0;&#x6D4B;(frame busting)</strong>
+&#x5728;&#x9875;&#x9762;&#x5185;&#x901A;&#x8FC7;&#x5224;&#x65AD; top&#x3001;parent&#x3001;self &#x7B49;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x68C0;&#x67E5;&#x5F53;&#x524D;&#x9875;&#x9762;&#x73AF;&#x5883;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x88AB;&#x7ED5;&#x8FC7;&#x7684;&#x6982;&#x7387;&#x975E;&#x5E38;&#x5927;&#x3002;</p>
+<p>&#x4F8B;&#x5B50;&#x53C2;&#x89C1;&#xFF1A;<a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Clickjacking_Defense_Cheat_Sheet.md" target="_blank">Insecure Non-Working Scripts DO NOT USE</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options" target="_blank"><strong>X-Frame-Options Response Headers</strong></a></p>
+<p>&#x4F5C;&#x4E3A;&#x54CD;&#x5E94;&#x5934;&#xFF0C;&#x544A;&#x77E5;&#x6D4F;&#x89C8;&#x5668;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x5F53;&#x524D;&#x7F51;&#x7AD9;&#x5728; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>frame</span><span class="token punctuation">&gt;</span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span><span class="token punctuation">&gt;</span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>embed</span><span class="token punctuation">&gt;</span></span> &#x6216;&#x8005; <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>object</span><span class="token punctuation">&gt;</span></span></code> &#x6807;&#x7B7E;&#x4E2D;&#x663E;&#x793A;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x683C;&#x5F0F;&#xFF1A;</p>
+<blockquote>
+<p>X-Frame-Options: deny
+X-Frame-Options: sameorigin
+X-Frame-Options: allow-from <a href="https://example.com/" target="_blank">https://example.com/</a></p>
+</blockquote>
+<p>&#x517C;&#x5BB9;&#x6027;</p>
+<p><img src="asserts/x-frame-option.jpg" alt="x-frame-options"></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors" target="_blank"><strong>CSP:frame-ancestors</strong></a></p>
+<p>Content-Security-Policy &#x5934;&#x91CC; frame-ancestors &#x6307;&#x4EE4;&#x3002;&#x6700;&#x65B0;&#x7279;&#x65B0;&#xFF0C;&#x652F;&#x6301;&#x7A0B;&#x5EA6;&#x4E0D;&#x9AD8;&#x3002;&#x4E0E; X-Frame-Options &#x533A;&#x522B;&#x5728;&#x4E8E;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x591A;&#x4E2A;&#x6E90;&#x5E76;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x683C;&#x5F0F;</p>
+<blockquote>
+<p>Content-Security-Policy: frame-ancestors <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">&gt;</span></span></code>;
+Content-Security-Policy: frame-ancestors <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">&gt;</span></span></code>;</p>
+</blockquote>
+<p><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">&gt;</span></span></code> &#x53D6;&#x503C;  </p>
+<ul>
+<li>&apos;none&apos; </li>
+<li>&apos;self&apos;</li>
+<li><code>&apos;self&apos; &apos;\*.somesite.com&apos; &apos;https://myfriend.site.com&apos;</code></li>
+</ul>
+<p>&#x517C;&#x5BB9;&#x6027;</p>
+<p><img src="asserts/csp-from-ancestors.jpg" alt="x-frame-options"></p>
 <h3 id="refs">Refs</h3>
 <ul>
 <li><a href="https://www.owasp.org/index.php/Clickjacking" target="_blank">https://www.owasp.org/index.php/Clickjacking</a></li>
+<li><a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Clickjacking_Defense_Cheat_Sheet.md" target="_blank">https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Clickjacking_Defense_Cheat_Sheet.md</a></li>
+<li></li>
 </ul>
 
                                 
@@ -432,7 +463,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"点击劫持(ClickJacking)","level":"1.2.1.3.3","depth":4,"next":{"title":"[HTML5安全]","level":"1.2.1.3.4","depth":4,"ref":"","articles":[]},"previous":{"title":"跨站点请求伪造(CSRF)","level":"1.2.1.3.2","depth":4,"path":"blog/frontend/web-security/csrf.md","ref":"blog/frontend/web-security/csrf.md","articles":[]},"dir":"ltr"},"config":{"plugins":["prism","-highlight"],"root":"./zh","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"blog/frontend/web-security/clickjacking.md","mtime":"2019-07-07T09:54:59.411Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-07T10:00:31.834Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"点击劫持(ClickJacking)","level":"1.2.1.3.3","depth":4,"next":{"title":"[HTML5安全]","level":"1.2.1.3.4","depth":4,"ref":"","articles":[]},"previous":{"title":"跨站点请求伪造(CSRF)","level":"1.2.1.3.2","depth":4,"path":"blog/frontend/web-security/csrf.md","ref":"blog/frontend/web-security/csrf.md","articles":[]},"dir":"ltr"},"config":{"plugins":["prism","-highlight"],"root":"./zh","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"blog/frontend/web-security/clickjacking.md","mtime":"2019-07-07T11:34:51.640Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-07T11:35:08.917Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
