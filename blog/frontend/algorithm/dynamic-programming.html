@@ -757,14 +757,7 @@ console.log(`result is :`, result);
 <p>&#x8F93;&#x5165;&#xFF1A;<code>1234</code></p>
 <p>&#x8F93;&#x51FA;&#xFF1A;<code>[ &apos;ABCD&apos;, &apos;LCD&apos;, &apos;AWD&apos; ]</code></p>
 <p>&#x9012;&#x5F52;&#x7248;&#x672C;&#xFF1A;</p>
-<pre class="language-"><code>/**
- * Description:
- * Assumption  table: {1: &apos;A&apos;, 2: &apos;B&apos;, ... , 26: &apos;Z&apos;}
- * Input: 124
- * Output: ABD, LD
- * */
-
-function genTable() {
+<pre class="language-"><code>function genTable() {
     let table = {};
     for(let i = 1; i &lt;= 26; i++) {
         table[i] = String.fromCharCode(65 + i - 1);
@@ -779,7 +772,7 @@ function convert(str) {
     let { length } = str;
 
     if (length === 1) {
-        return [table[str]];
+        return [table[str]] || [];
     }
 
     let lastChar = table[str[length-1]];
@@ -787,12 +780,16 @@ function convert(str) {
     let subConverts = convert(str.slice(0,-1));
 
     if (length === 2) {
-        return lastTwoChar ? [table[str[length-2]] + lastChar, lastTwoChar] : [lastChar + table[str[length-2]]]
+        (table[str[length-2]] &amp;&amp; lastChar) &amp;&amp; result.push(table[str[length-2]] + lastChar);
+        lastTwoChar &amp;&amp; result.push(lastTwoChar);
+        return result;
     }
 
-    result = subConverts.map(sub =&gt; {
-        return sub + lastChar;
-    });
+    if (lastChar) {
+        result = subConverts.map(sub =&gt; {
+            return sub + lastChar;
+        });
+    }
 
     if (lastTwoChar) {
         subConverts = convert(str.slice(0,-2));
@@ -807,9 +804,11 @@ function preConvert(num) {
     return convert(num.toString());
 }
 
-let res = preConvert(1234);
-console.log(table);
+let res = preConvert(2021);
 console.log(res);
+
+// output 
+// [ &apos;TBA&apos;, &apos;TU&apos; ]
 </code></pre><h2 id="refs">Refs</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank">Dynamic Programming Wikipedia</a></li>
@@ -855,7 +854,7 @@ console.log(res);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"动态规划","level":"1.2.2.1.2","depth":4,"next":{"title":"贪心算法","level":"1.2.2.1.3","depth":4,"ref":"","articles":[]},"previous":{"title":"分而治之","level":"1.2.2.1.1","depth":4,"path":"blog/frontend/algorithm/divide-and-conquer.md","ref":"blog/frontend/algorithm/divide-and-conquer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["prism","-highlight"],"root":"./zh","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"blog/frontend/algorithm/dynamic-programming.md","mtime":"2019-08-27T16:05:49.490Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-27T16:06:23.622Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"动态规划","level":"1.2.2.1.2","depth":4,"next":{"title":"贪心算法","level":"1.2.2.1.3","depth":4,"ref":"","articles":[]},"previous":{"title":"分而治之","level":"1.2.2.1.1","depth":4,"path":"blog/frontend/algorithm/divide-and-conquer.md","ref":"blog/frontend/algorithm/divide-and-conquer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["prism","-highlight"],"root":"./zh","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"blog/frontend/algorithm/dynamic-programming.md","mtime":"2019-08-27T16:25:32.260Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-27T16:26:08.168Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
